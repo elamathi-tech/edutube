@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduTube - Learning Paths</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ff0000",
+                        dark: "#0f0f0f"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 min-h-screen">
+    <!-- ================= NAVBAR ================= -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-16 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <div class="bg-red-600 text-white px-2 py-1 rounded-lg font-bold">
+                        ▶
+                    </div>
+                    <span class="text-xl font-bold">
+                        Edu<span class="text-red-600">Tube</span>
+                    </span>
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#" class="text-gray-600 hover:text-red-600">
+                        Home
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-red-600">
+                        Videos
+                    </a>
+                    <a href="#" class="text-red-600 font-semibold">
+                        Learning Paths
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-red-600">
+                        Dashboard
+                    </a>
+                </nav>
+
+                <!-- Profile -->
+                <div class="flex items-center gap-3">
+                    <button id="themeBtn" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200">
+                        🌙
+                    </button>
+                    <div
+                        class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center font-bold">
+                        J
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- PAGE HEADER -->
+        <section class="text-center mb-10">
+            <p class="text-red-600 font-semibold mb-2">
+                🎓 Learn Step by Step
+            </p>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                Learning Paths
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-600">
+                Follow structured learning paths and build your skills
+                from beginner to advanced level.
+            </p>
+        </section>
+
+        <!-- ================= PATH SELECTOR ================= -->
+        <section class="mb-10">
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="path-btn bg-red-600 text-white px-5 py-2 rounded-full" data-path="web">
+                    💻 Web Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="uiux">
+                    🎨 UI/UX Design
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🐍 Python
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ⚛️ React Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ☕ Java Programming
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🗄️ Database & SQL
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    📊 Data Science
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🤖 AI & Machine Learning
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    📱 Mobile App Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ☁️ Cloud & DevOps
+                </button>
+            </div>
+        </section>
+        <!-- ================= PATH INFORMATION ================= -->
+        <section id="pathInfo" class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+            <!-- JavaScript will insert content here -->
+        </section>
+
+        <!-- ================= PROGRESS ================= -->
+        <section class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <p class="text-sm text-gray-500">
+                        Your Progress
+                    </p>
+                    <h2 id="progressText" class="text-2xl font-bold">
+                        0%
+                    </h2>
+                </div>
+                <button id="continueBtn"
+                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-semibold">
+                    ▶ Continue Learning
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-5">
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-full bg-red-600 rounded-full transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+                </div>
+                <p id="lessonCount" class="text-sm text-gray-500 mt-2">
+                    0 of 0 lessons completed
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= LESSONS ================= -->
+        <section>
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-2xl font-bold">
+                    Learning Roadmap
+                </h2>
+                <button id="resetBtn" class="text-sm text-red-600 hover:underline">
+                    Reset Progress
+                </button>
+            </div>
+            <!-- Lessons will be inserted here -->
+            <div id="lessonContainer" class="space-y-4">
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-8 text-center">
+            <p class="font-semibold text-lg">
+                🎓 Edu<span class="text-red-500">Tube</span>
+            </p>
+            <p class="text-gray-400 text-sm mt-2">
+                Learn. Practice. Grow.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="learning path.js"></script>
+</body>
+</html>
