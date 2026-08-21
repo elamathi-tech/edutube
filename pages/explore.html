@@ -9,6 +9,174 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-900">
+
+    <!--Header-->
+    <header class="bg-white border-b">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+        <!--Logo-->
+        <a href="../index.html" class="text-2xl font-bold text-indigo-600">
+          ▶ EduTube
+        </a>
+
+        <!--Home Link-->
+        <a href="../index.html" class="text-gray-600 hover:text-indigo-600 font-medium">
+          Home
+        </a>
+
+      </div>
+    </header>
+
+    <!--Main-->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+      <!--Page Heading-->
+      <section class="mb-8">
+
+        <h1 class="text-3xl font-bold mb-2 md:text-4xl">
+          Explore Courses
+        </h1>
+
+        <p class="text-gray-600">
+          Discover courses and start learning something new.
+        </p>
+      </section>
+
+      <!--Search and Filters Section-->
+      <section class="bg-white rounded-xl p-5 shadow-sm mb-8">
+
+        <!--Search Section-->
+        <div class="mb-4">
+
+          <label for="inputSearch" class="block font-semibold text-sm mb-2">
+            Search Courses
+          </label>
+          
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2">
+              🔍
+            </span>
+            <input id="inputSearch" type="text" placeholder="Search for courses...."  class="w-full border rounded-lg pl-11 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+
+        <!--Filter Section-->
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-6">
+
+          <!--Category-->
+          <div>
+            <label for="filterCategory" class="block text-sm font-semibold mb-2">
+              Category
+            </label>
+
+            <select id="filterCategory" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Categories</option>
+              <option value="web">Web Development</option>
+              <option value="programming">Programming</option>
+              <option value="data">Data Science</option>
+              <option value="design">Design</option>
+            </select>
+          </div>
+          
+          <!--Difficulty-->
+          <div>
+            <label for="difficultyFilter" class="block text-sm font-semibold mb-2">
+              Difficulty
+            </label>
+
+            <select id="difficultyFilter" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+
+          <!--Duration-->
+          <div>
+            <label for="durationFilter" class="block text-sm font-semibold mb-2">
+              Duration
+            </label>
+
+            <select id="durationFilter" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Durations</option>
+              <option value="short">Under 2 hours</option>
+              <option value="medium">2-4 hours</option>
+              <option value="long">4+ hours</option>
+            </select>
+          </div>
+
+          <!--Rating-->
+          <div>
+            <label for="ratingFilter" class="block text-sm font-semibold mb-2">
+              Rating
+            </label>
+
+            <select id="ratingFilter" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Ratings</option>
+              <option value="4">4+ Stars</option>
+              <option value="4.5">4.5+ Stars</option>
+              <option value="4.8">4.8+ Stars</option>
+            </select>
+          </div>
+
+          <!--Sort-->
+          <div>
+            <label for="sortFilter" class="block text-sm font-semibold mb-2">
+              Sort
+            </label>
+
+            <select id="sortFilter" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="popular">Popular</option>
+              <option value="rating">Rating: High to Low</option>
+              <option value="duration">Duration: Short to Long</option>
+            </select>
+          </div>
+
+          <!--Reset-->
+          <div class="flex items-end">
+            <button id="resetButton" type="button" class="w-full bg-indigo-600 text-white font-semibold rounded-lg px-4 py-3 hover:bg-indigo-700">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!--Resuls Heading-->
+      <section>
+        <div class="flex items-center justify-between mb-5">
+
+          <h2 class="text-2xl font-bold">
+            Courses
+          </h2>
+
+          <span id="countResult" class="text-sm text-gray-500">
+            0 courses
+          </span>
+        </div>
+
+        <!--Course Grid-->
+        <div id="courseContainer" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+
+        </div>
+
+        <!--No Results-->
+        <div id="noResults" class="hidden text-center py-12">
+          
+          <p class="text-xl font-semibold">
+            No courses found
+          </p>
+
+          <p class="text-gray-500 mt-2">
+            Try changing your search or filters.
+          </p>
+        </div>
+      </section>
+    </main>
+
+
+   <script src="../js/script.js"></script> 
   </body>
 </html>
