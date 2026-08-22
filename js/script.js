@@ -47,7 +47,7 @@ const courses = [
     duration:195,
     rating:4.9,
     description:"Explore advanced JavaScript concepts."
-  }  
+  }, 
 ];
 
 const searchInput = document.getElementById("inputSearch");
@@ -60,11 +60,33 @@ const noResults = document.getElementById("noResults");
 const durationFilter = document.getElementById("durationFilter");
 const ratingFilter = document.getElementById("ratingFilter");
 const sortFilter = document.getElementById("sortFilter");
+const previousButton = document.getElementById("previousButton");
+const page1Button = document.getElementById("page1Button");
+const page2Button = document.getElementById("page2Button");
+const nextButton = document.getElementById("nextButton");
+
+let currentPage = 1;
+const coursesPerpage = 3;
+
 
 function displayCourses(courseList){
   courseContainer.innerHTML = "";
+  
+  const totalPages = Math.ceil(courseList.length / coursesPerpage);
 
-  courseList.forEach(function(course){
+  if(totalPages === 0){
+    currentPage = 1;
+  }
+  else if (currentPage > totalPages){
+    currentPage = totalPages;
+  }
+
+
+  const startIndex = (currentPage - 1) * coursesPerpage;
+  const endIndex = startIndex + coursesPerpage;
+  const pageCourses = courseList.slice(startIndex, endIndex);
+
+  pageCourses.forEach(function(course){
 
     const courseCard = document.createElement("div");
 
@@ -107,7 +129,7 @@ function displayCourses(courseList){
     courseContainer.appendChild(courseCard);
   });
 
-  resultCount.textContent = `${courseList.length} courses`;
+  resultCount.textContent = `${courseList.length} ${courseList.length === 1 ? "course" : "courses"}`;
 
   if(courseList.length === 0){
     noResults.classList.remove("hidden");
@@ -115,13 +137,35 @@ function displayCourses(courseList){
   else{
     noResults.classList.add("hidden");
   }
+  page1Button.classList.toggle("hidden", totalPages < 1);
+page2Button.classList.toggle("hidden", totalPages < 2);
+
+previousButton.disabled = currentPage === 1; 
+nextButton.disabled = currentPage === totalPages;
+
+page1Button.classList.toggle("bg-indigo-600", currentPage === 1);
+page1Button.classList.toggle("text-white", currentPage === 1);
+page2Button.classList.toggle("bg-indigo-600", currentPage === 2);
+page2Button.classList.toggle("text-white", currentPage === 2);
 }
+
 
 displayCourses(courses);
 
+function goToPage(page){
+  currentPage = page;
+  filterCourses(false);
+}
 
 
-function filterCourses(){
+
+function filterCourses(resetPage = true){
+
+  if(resetPage){
+    currentPage = 1;
+  }
+  
+
   const searchText = searchInput.value.toLowerCase();
   const selectedCategory = filterCategory.value;
   const selectedDifficulty = difficultyFilter.value;
@@ -174,7 +218,23 @@ filterCategory.addEventListener("change", filterCourses);
 difficultyFilter.addEventListener("change", filterCourses);
 durationFilter.addEventListener("change", filterCourses);
 ratingFilter.addEventListener("change", filterCourses);
-sortFilter.addEventListener("change",filterCourses);
+sortFilter.addEventListener("change", filterCourses);
+
+page1Button.addEventListener("click", function(){
+  goToPage(1);
+});
+page2Button.addEventListener("click", function(){
+  goToPage(2);
+});
+
+previousButton.addEventListener("click", function(){
+  if(currentPage > 1){
+    goToPage(currentPage - 1);
+  }
+});
+nextButton.addEventListener("click", function(){
+  goToPage(currentPage + 1);
+});
 
 resetButton.addEventListener("click",function(){
   searchInput.value = "";
