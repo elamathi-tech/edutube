@@ -3,6 +3,9 @@
 //EXPLORE + SEARCH & FILTER
 //===================================
 
+const menuButton = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
 const courses = [
   {
     title:"HTML & CSS Foundations",
@@ -244,4 +247,8 @@ resetButton.addEventListener("click",function(){
   ratingFilter.value = "all";
   sortFilter.value = "popular";
   filterCourses();
+});
+
+menuButton.addEventListener("click", function(){
+  mobileMenu.classList.toggle("hidden");
 });
