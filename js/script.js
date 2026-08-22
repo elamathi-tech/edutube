@@ -13,7 +13,8 @@ const courses = [
     difficulty:"beginner",
     duration:130,
     rating:4.5,
-    description:"Learn the fundamentals of HTML and CSS."
+    description:"Learn the fundamentals of HTML and CSS.",
+    image:"../images/courses/html-css.png"
   },
 
   {
@@ -22,7 +23,8 @@ const courses = [
     difficulty:"beginner",
     duration:220,
     rating:4.8,
-    description:"Learn the basics of JavaScript programming"
+    description:"Learn the basics of JavaScript programming.",
+    image:"../images/courses/javascript.png"
   },
 
   {
@@ -31,7 +33,8 @@ const courses = [
     difficulty:"intermediate",
     duration:240,
     rating:4.6,
-    description:"Build websites that work across different screen sizes."
+    description:"Build websites that work across different screen sizes.",
+    image:"../images/courses/responsive-design.png"
   },
 
   {
@@ -40,7 +43,8 @@ const courses = [
     difficulty:"intermediate",
     duration:320,
     rating:4.7,
-    description:"Learn Python concepts used in data science."
+    description:"Learn Python concepts used in data science.",
+    image:"../images/courses/python-data-science.png"
   },
 
   {
@@ -49,7 +53,8 @@ const courses = [
     difficulty:"advanced",
     duration:195,
     rating:4.9,
-    description:"Explore advanced JavaScript concepts."
+    description:"Explore advanced JavaScript concepts.",
+    image:"../images/courses/advanced-javascript.png"
   }, 
 ];
 
@@ -97,7 +102,10 @@ function displayCourses(courseList){
 
     courseCard.innerHTML = `
     <div class="h-32 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-       <span class="text-4xl">🎓</span>
+         <img
+    src="${course.image}"
+    alt="${course.title}"
+    class="w-full h-full object-cover">
     </div>
     
     <h3 class="text-xl font-bold mb-2">
