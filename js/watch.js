@@ -1,3 +1,11 @@
+const menuButton = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+menuButton.addEventListener("click", function(){
+  mobileMenu.classList.toggle("hidden");
+});
+
+
 const addNoteButton = document.getElementById("addNoteButton");
 const notesContainer = document.getElementById("notesContainer");
 const noNotes = document.getElementById("noNotes");
