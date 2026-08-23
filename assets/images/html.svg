@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="htmlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E44D26"/>
+      <stop offset="100%" stop-color="#F16529"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E2F"/>
+      <stop offset="100%" stop-color="#0F0F1A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  <circle cx="700" cy="80" r="180" fill="#E44D26" opacity="0.12"/>
+  <rect x="40" y="40" width="720" height="370" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <g transform="translate(140, 110)">
+    <path d="M0 0 L15 170 L90 190 L165 170 L180 0 Z" fill="url(#htmlGrad)"/>
+    <path d="M90 17 L90 173 L151 156 L163 17 Z" fill="#F16529"/>
+    <path d="M40 45 H140 L135 90 H90 V115 L125 105 L122 138 L90 148 V170 L145 155 L153 68 H40 Z" fill="#FFFFFF"/>
+  </g>
+  <text x="400" y="190" font-family="'Inter', system-ui, sans-serif" font-weight="800" font-size="38" fill="#FFFFFF">HTML Fundamentals</text>
+  <text x="400" y="240" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="26" fill="#F16529">Web Structure &amp; Semantics</text>
+  <rect x="400" y="270" width="180" height="36" rx="18" fill="rgba(228,77,38,0.2)" stroke="#E44D26" stroke-width="1.5"/>
+  <text x="490" y="294" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="15" fill="#F16529" text-anchor="middle">BEGINNER • 45 MIN</text>
+</svg>
