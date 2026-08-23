@@ -1,14 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Learning-path EduTube</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <title>EduTube - Learning Paths</title>
 
-  <body>
-  </body>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ff0000",
+                        dark: "#0f0f0f"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+
+        <div class="flex items-center justify-between p-4 md:px-6 xl:px-10">
+
+            <!-- Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-play text-white"></i>
+                </div>
+
+                <h1 class="font-bold text-2xl">EduTube</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex gap-8 font-semibold">
+
+                <a href="home" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    Home
+                </a>
+
+                <a href="#categories" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    Explore
+                </a>
+
+                <a href="#learning" class="text-indigo-600 hover:underline hover:text-gray-700">
+                 Learning Path
+                </a>
+
+                <a href="#about" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    About
+                </a>
+
+            </div>
+
+            <!-- Desktop Right Controls -->
+            <div class="hidden xl:flex gap-4">
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="./image/search.png" alt="Search" class="w-6">
+                </div>
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="./image/notification.png" alt="Notification" class="w-6">
+                </div>
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="./image/moon.png" alt="Dark mode" class="w-6">
+                </div>
+
+            </div>
+
+            <!-- Tablet / Mobile Hamburger -->
+            <div id="menu-btn" class="flex xl:hidden cursor-pointer p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </div>
+
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white">
+
+            <div class="flex flex-col items-center gap-6 py-4">
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
+                    <img src="./image/search.png" alt="Search" class="w-6">
+                    <p class="text-sm mt-1">Search</p>
+                </div>
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
+                    <img src="./image/notification.png" alt="Notification" class="w-6">
+                    <p class="text-sm mt-1">Notification</p>
+                </div>
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black ">
+                    <img src="./image/moon.png" alt="Dark mode" class="w-6">
+                    <p class="text-sm mt-1">Theme</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= MAIN ================= -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- PAGE HEADER -->
+        <section class="text-center mb-10">
+            <p class="text-red-600 font-semibold mb-2">
+                🎓 Learn Step by Step
+            </p>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                Learning Paths
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-600">
+                Follow structured learning paths and build your skills
+                from beginner to advanced level.
+            </p>
+        </section>
+
+        <!-- ================= PATH SELECTOR ================= -->
+        <section class="mb-10">
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="path-btn bg-red-600 text-white px-5 py-2 rounded-full" data-path="web">
+                    💻 Web Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="uiux">
+                    🎨 UI/UX Design
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🐍 Python
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ⚛️ React Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ☕ Java Programming
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🗄️ Database & SQL
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    📊 Data Science
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    🤖 AI & Machine Learning
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    📱 Mobile App Development
+                </button>
+                <button class="path-btn bg-white text-gray-700 px-5 py-2 rounded-full shadow-sm hover:bg-gray-50"
+                    data-path="python">
+                    ☁️ Cloud & DevOps
+                </button>
+            </div>
+        </section>
+        <!-- ================= PATH INFORMATION ================= -->
+        <section id="pathInfo" class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+            <!-- JavaScript will insert content here -->
+        </section>
+
+        <!-- ================= PROGRESS ================= -->
+        <section class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <p class="text-sm text-gray-500">
+                        Your Progress
+                    </p>
+                    <h2 id="progressText" class="text-2xl font-bold">
+                        0%
+                    </h2>
+                </div>
+                <button id="continueBtn"
+                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-semibold">
+                    ▶ Continue Learning
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-5">
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-full bg-red-600 rounded-full transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+                </div>
+                <p id="lessonCount" class="text-sm text-gray-500 mt-2">
+                    0 of 0 lessons completed
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= LESSONS ================= -->
+        <section>
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-2xl font-bold">
+                    Learning Roadmap
+                </h2>
+                <button id="resetBtn" class="text-sm text-red-600 hover:underline">
+                    Reset Progress
+                </button>
+            </div>
+            <!-- Lessons will be inserted here -->
+            <div id="lessonContainer" class="space-y-4">
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="about" class="bg-gray-900 text-white py-10 pb-24 md:pb-10">
+
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+
+                <div>
+                    <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-play text-white"></i>
+                    </div>
+
+                    <p class="text-gray-400 max-w-xs mt-3">
+                        Learn practical skills through structured,
+                        bite-sized video courses.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Company</h3>
+
+                    <ul class="text-gray-400 space-y-2">
+                        <li>About Us</li>
+                        <li>Privacy Policy</li>
+                        <li>Terms of Use</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Follow</h3>
+
+                    <div class="flex gap-4">
+                        <i class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-5 text-sm text-gray-400">
+                &copy; 2026 EduTube. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex md:hidden text-center">
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="./image/house.png" alt="Home" class="w-6">
+            <a href="#" class="text-sm">Home</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="./image/search.png" alt="Explore" class="w-6">
+            <a href="#categories" class="text-sm">Explore</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="./image/books.png" alt="Learning" class="w-6">
+            <a href="#learning" class="text-sm">Learning</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="./image/user.png" alt="Profile" class="w-6">
+            <a href="#" class="text-sm">Profile</a>
+        </div>
+
+    </nav>
+
+
+    <!-- JavaScript -->
+    <script src="learning-path.js"></script>
+</body>
 </html>
