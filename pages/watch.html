@@ -7,8 +7,245 @@
     <title>Watch- EduTube</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Font-awesome-Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+    <style>
+        .body{
+            box-sizing: border-box;
+        }
+        .bottom-nav {
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        }
+    </style>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-900">
+
+        <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+
+        <div class="flex items-center justify-between p-4 md:px-6 xl:px-10">
+
+            <!-- Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-play text-white"></i>
+                </div>
+
+                <h1 class="font-bold text-2xl">EduTube</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex gap-8 font-semibold">
+
+                <a href="#" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    Home
+                </a>
+
+                <a href="#categories" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    Explore
+                </a>
+
+                <a href="#learning" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    My Learning
+                </a>
+
+                <a href="#about" class="text-indigo-600 hover:underline hover:text-gray-700">
+                    About
+                </a>
+
+            </div>
+
+            <!-- Desktop Right Controls -->
+            <div class="hidden xl:flex gap-4">
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                </div>
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="../images/navbar/notification.png" alt="Notification" class="w-6">
+                </div>
+
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
+                    <img src="../images/navbar/crescent-moon.png" alt="Dark mode" class="w-6">
+                </div>
+
+            </div>
+
+            <!-- Tablet / Mobile Hamburger -->
+            <div id="menu-btn" class="flex xl:hidden cursor-pointer p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </div>
+
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white">
+
+            <div class="flex flex-col items-center gap-6 py-4">
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                    <p class="text-sm mt-1">Search</p>
+                </div>
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
+                    <img src="../images/navbar/notification.png" alt="Notification" class="w-6">
+                    <p class="text-sm mt-1">Notification</p>
+                </div>
+
+                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black ">
+                    <img src="../images/navbar/crescent-moon.png" alt="Dark mode" class="w-6">
+                    <p class="text-sm mt-1">Theme</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    
+    <!--Main Content-->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+      <!--Video Section-->
+      <section class="mb-8">
+
+        <div class="bg-black rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-5xl mb-3">
+              ▶️
+            </div>
+            <p class="text-lg font-semibold">
+              Video Player
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <h1 class="text-3xl font-bold mb-3">
+            Introduction to HTML & CSS
+          </h1>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
+            <span>👨‍🏫 EduTube Instructor</span>
+            <span>⏱️ 2h 10m</span>
+            <span>⭐ 4.5</span>
+          </div>
+          <p class="text-gray-600">
+            Learn the fundamentals of HTML and CSS and build the foundation you need for modern web development.
+          </p>
+        </div>
+      </section>
+
+      <!--Notes Section-->
+      <section class="bg-white rounded-xl shadow-sm p-6">
+
+        <div class="flex items-center justify-between mb-5">
+          <h2 class="text-2xl font-bold">
+            My Notes
+          </h2>
+          <button id="addNoteButton" type="button" class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700">
+            + Add Note
+          </button>
+        </div>
+
+        <!--Notes Container-->
+        <div id="notesContainer" class="space-y-4">
+          <p id="noNotes" class="text-gray-500">
+            No notes added yet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!--Footer-->
+    <footer id="about" class="bg-gray-900 text-white py-10 pb-24 md:pb-10">
+
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+
+                <div>
+                    <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-play text-white"></i>
+                    </div>
+
+                    <p class="text-gray-400 max-w-xs mt-3">
+                        Learn practical skills through structured,
+                        bite-sized video courses.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Company</h3>
+
+                    <ul class="text-gray-400 space-y-2">
+                        <li>About Us</li>
+                        <li>Privacy Policy</li>
+                        <li>Terms of Use</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Follow</h3>
+
+                    <div class="flex gap-4">
+                        <i class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-5 text-sm text-gray-400">
+                &copy; 2026 EduTube. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex md:hidden text-center">
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/house.png" alt="Home" class="w-6">
+            <a href="#" class="text-sm">Home</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/search.png" alt="Explore" class="w-6">
+            <a href="#categories" class="text-sm">Explore</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/books.png" alt="Learning" class="w-6">
+            <a href="#learning" class="text-sm">Learning</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/user.png" alt="Profile" class="w-6">
+            <a href="#" class="text-sm">Profile</a>
+        </div>
+
+    </nav>
+
+
+    <script src="../js/watch.js"></script>
   </body>
 </html>
