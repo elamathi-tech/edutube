@@ -561,3 +561,31 @@ window.toggleTheme = toggleTheme;
 window.updateVideoStatus = updateVideoStatus;
 window.watchVideo = watchVideo;
 window.EDUTUBE_CATALOG = EDUTUBE_CATALOG;
+
+
+
+// Theme Toggle
+const themeBtns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
+
+function applyTheme(isDark) {
+    document.body.classList.toggle("bg-gray-900", isDark);
+    document.body.classList.toggle("text-white", isDark);
+
+    document.body.classList.toggle("bg-gray-50", !isDark);
+    document.body.classList.toggle("text-gray-800", !isDark);
+
+    document.querySelectorAll("nav").forEach(nav => {
+        nav.classList.toggle("bg-gray-900", isDark);
+        nav.classList.toggle("bg-white", !isDark);
+    });
+}
+
+applyTheme(localStorage.getItem("theme") === "dark");
+
+themeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const dark = !document.body.classList.contains("bg-gray-900");
+        applyTheme(dark);
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    });
+});

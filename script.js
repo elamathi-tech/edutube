@@ -4,10 +4,13 @@ console.log("Quiz script connected");
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
-menuBtn.addEventListener("click", function () {
-    mobileMenu.classList.toggle("hidden");
-});
-    
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+    });
+}
+
+
 const questions = [
 
     [
@@ -165,19 +168,38 @@ function retryQuiz() {
     showQuestion();
 }
 
-nextBtn.addEventListener(
-    "click",
-    nextQuestion
-);
+if (nextBtn && previousBtn && retryBtn && quizCard && resultCard) {
+    nextBtn.addEventListener("click", nextQuestion);
+    previousBtn.addEventListener("click", previousQuestion);
+    retryBtn.addEventListener("click", retryQuiz);
 
-previousBtn.addEventListener(
-    "click",
-    previousQuestion
-);
+    showQuestion();
+}
 
-retryBtn.addEventListener(
-    "click",
-    retryQuiz
-);
 
-showQuestion();
+
+const themeBtns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
+
+const applyTheme = (isDark) => {
+    document.body.classList.toggle("bg-gray-900", isDark);
+    document.body.classList.toggle("text-white", isDark);
+    document.body.classList.toggle("bg-gray-50", !isDark);
+    document.body.classList.toggle("text-gray-800", !isDark);
+
+    const nav = document.querySelector("nav");
+    if (nav) {
+        nav.classList.toggle("bg-gray-900", isDark);
+        nav.classList.toggle("bg-white", !isDark);
+    }
+};
+
+const isDark = localStorage.getItem("theme") === "dark";
+applyTheme(isDark);
+
+themeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const dark = !document.body.classList.contains("bg-gray-900");
+        applyTheme(dark);
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    });
+});

@@ -8,71 +8,64 @@
     <title>EduTube - Quiz & Leaderboard</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer">
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Tailwind CSS -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-        <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white shadow-md">
 
         <div class="flex items-center justify-between p-4 md:px-6 xl:px-10">
 
             <!-- Brand -->
-            <div class="flex items-center gap-3">
+            <a href="../index.html" class="flex items-center gap-3">
                 <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
                     <i class="fa-solid fa-play text-white"></i>
                 </div>
 
                 <h1 class="font-bold text-2xl">EduTube</h1>
-            </div>
+            </a>
 
             <!-- Desktop Navigation -->
+
             <div class="hidden xl:flex gap-8 font-semibold">
 
-                <a href="#" class="text-indigo-600 hover:underline hover:text-gray-700">
-                    Home
-                </a>
+                <a href="../index.html" class="text-indigo-600 hover:underline hover:text-gray-700">Home</a>
 
-                <a href="#categories" class="text-indigo-600 hover:underline hover:text-gray-700">
-                    Explore
-                </a>
+                <a href="explore.html" class="text-indigo-600 hover:underline hover:text-gray-700">Explore</a>
 
-                <a href="#learning" class="text-indigo-600 hover:underline hover:text-gray-700">
-                    My Learning
-                </a>
+                <a href="learning-path.html" class="text-indigo-600 hover:underline hover:text-gray-700">My Learning</a>
 
-                <a href="#about" class="text-indigo-600 hover:underline hover:text-gray-700">
-                    About
-                </a>
+                <a href="quiz.html" class="text-indigo-600 hover:underline hover:text-gray-700">Quiz</a>
+
+                <a href="contact.html" class="text-indigo-600 hover:underline hover:text-gray-700">About</a>
 
             </div>
 
             <!-- Desktop Right Controls -->
             <div class="hidden xl:flex gap-4">
 
-                <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
-                    <img src="images/navbar/search.png" alt="Search" class="w-6">
-                </div>
+                <a href="explore.html"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                </a>
 
-                <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
-                    <img src="images/navbar/notification.png" alt="Notification" class="w-6">
-                </div>
+                <a href="watchlist.html"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+                </a>
 
-                <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md cursor-pointer hover:bg-gray-100">
-                    <img src="images/navbar/crescent-moon.png" alt="Dark mode" class="w-6">
-                </div>
+                <button id="theme-toggle"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+                </button>
+
 
             </div>
 
@@ -84,28 +77,33 @@
         </div>
 
         <!-- Hamburger Menu -->
+
         <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white">
 
             <div class="flex flex-col items-center gap-6 py-4">
 
-                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
-                    <img src="images/navbar/search.png" alt="Search" class="w-6">
-                    <p class="text-sm mt-1">Search</p>
-                </div>
+                <a href="explore.html"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                    <span class="text-sm mt-1">Search</span>
+                </a>
 
-                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black">
-                    <img src="images/navbar/notification.png" alt="Notification" class="w-6">
-                    <p class="text-sm mt-1">Notification</p>
-                </div>
+                <a href="watchlist.html"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+                    <span class="text-sm mt-1">Watchlist</span>
+                </a>
 
-                <div class="flex flex-col items-center cursor-pointer hover:text-indigo-600 border-b border-black ">
-                    <img src="images/navbar/crescent-moon.png" alt="Dark mode" class="w-6">
-                    <p class="text-sm mt-1">Theme</p>
-                </div>
+                <button id="theme-toggle-mobile"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+                    <span class="text-sm mt-1">Theme</span>
+                </button>
 
             </div>
 
         </div>
+
 
     </nav>
 
@@ -133,18 +131,15 @@
 
 
         <!-- Quiz Card -->
-        <div id="quiz-card"
-            class="bg-white rounded-xl shadow-md p-6 md:p-8">
+        <div id="quiz-card" class="bg-white rounded-xl shadow-md p-6 md:p-8">
 
             <!-- Question Number and Score -->
             <div class="flex justify-between mb-6">
 
-                <p id="question-number"
-                    class="font-semibold text-gray-600">
+                <p id="question-number" class="font-semibold text-gray-600">
                 </p>
 
-                <p id="score-text"
-                    class="text-indigo-600 font-semibold">
+                <p id="score-text" class="text-indigo-600 font-semibold">
                     Score: 0
                 </p>
 
@@ -152,14 +147,12 @@
 
 
             <!-- Question -->
-            <h2 id="question"
-                class="text-xl font-semibold mb-6">
+            <h2 id="question" class="text-xl font-semibold mb-6">
             </h2>
 
 
             <!-- Options -->
-            <div id="options"
-                class="space-y-3">
+            <div id="options" class="space-y-3">
             </div>
 
 
@@ -186,8 +179,7 @@
 
 
         <!-- Result Card -->
-        <div id="result-card"
-            class="hidden bg-white rounded-xl shadow-md p-8 text-center">
+        <div id="result-card" class="hidden bg-white rounded-xl shadow-md p-8 text-center">
 
             <div
                 class="w-16 h-16 mx-auto rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl">
@@ -204,8 +196,7 @@
                 You completed the JavaScript Basics Quiz.
             </p>
 
-            <p id="final-score"
-                class="text-4xl font-bold text-indigo-600 mt-6">
+            <p id="final-score" class="text-4xl font-bold text-indigo-600 mt-6">
             </p>
 
             <div class="mt-6">
@@ -233,8 +224,7 @@
 
     <!-- ==================== LEADERBOARD ==================== -->
 
-    <section id="leaderboard"
-        class="max-w-6xl mx-auto px-4 md:px-6 py-10">
+    <section id="leaderboard" class="max-w-6xl mx-auto px-4 md:px-6 py-10">
 
         <!-- Heading -->
         <div class="text-center mb-10">
@@ -527,10 +517,14 @@
                     <h3 class="font-bold mb-3">Follow</h3>
 
                     <div class="flex gap-4">
-                        <i class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
-                        <i class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
-                        <i class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
-                        <i class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
                     </div>
                 </div>
 
@@ -546,32 +540,38 @@
 
 
     <!-- Mobile Bottom Navigation -->
-    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex md:hidden text-center">
+    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex xl:hidden text-center">
 
         <div class="flex-1 flex flex-col items-center py-2">
-            <img src="images/navbar/house.png" alt="Home" class="w-6">
-            <a href="#" class="text-sm">Home</a>
+            <img src="../images/navbar/house.png" alt="Home" class="w-6">
+            <a href="../index.html" class="text-sm">Home</a>
         </div>
 
         <div class="flex-1 flex flex-col items-center py-2">
-            <img src="images/navbar/search.png" alt="Explore" class="w-6">
-            <a href="#categories" class="text-sm">Explore</a>
+            <img src="../images/navbar/search.png" alt="Explore" class="w-6">
+            <a href="explore.html" class="text-sm">Explore</a>
         </div>
 
         <div class="flex-1 flex flex-col items-center py-2">
-            <img src="images/navbar/books.png" alt="Learning" class="w-6">
-            <a href="#learning" class="text-sm">Learning</a>
+            <img src="../images/navbar/books.png" alt="Learning" class="w-6">
+            <a href="learning-path.html" class="text-sm">Learning</a>
         </div>
 
         <div class="flex-1 flex flex-col items-center py-2">
-            <img src="images/navbar/user.png" alt="Profile" class="w-6">
-            <a href="#" class="text-sm">Profile</a>
+            <i class="fa-solid fa-circle-question text-indigo-600 text-xl"></i>
+            <a href="quiz.html" class="text-sm">Quiz</a>
+        </div>
+
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/user.png" alt="Profile" class="w-6">
+            <a href="contact.html" class="text-sm">Profile</a>
         </div>
 
     </nav>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 
 </body>
 

@@ -8,54 +8,54 @@ const mobileMenu = document.getElementById("mobile-menu");
 
 const courses = [
   {
-    title:"HTML & CSS Foundations",
-    category:"web",
-    difficulty:"beginner",
-    duration:130,
-    rating:4.5,
-    description:"Learn the fundamentals of HTML and CSS.",
-    image:"../images/courses/html-css.png"
+    title: "HTML & CSS Foundations",
+    category: "web",
+    difficulty: "beginner",
+    duration: 130,
+    rating: 4.5,
+    description: "Learn the fundamentals of HTML and CSS.",
+    image: "../images/courses/html-css.png"
   },
 
   {
-    title:"JavaScript Essentials",
-    category:"programming",
-    difficulty:"beginner",
-    duration:220,
-    rating:4.8,
-    description:"Learn the basics of JavaScript programming.",
-    image:"../images/courses/javascript.png"
+    title: "JavaScript Essentials",
+    category: "programming",
+    difficulty: "beginner",
+    duration: 220,
+    rating: 4.8,
+    description: "Learn the basics of JavaScript programming.",
+    image: "../images/courses/javascript.png"
   },
 
   {
-    title:"Responsive Design",
-    category:"web",
-    difficulty:"intermediate",
-    duration:240,
-    rating:4.6,
-    description:"Build websites that work across different screen sizes.",
-    image:"../images/courses/responsive-design.png"
+    title: "Responsive Design",
+    category: "web",
+    difficulty: "intermediate",
+    duration: 240,
+    rating: 4.6,
+    description: "Build websites that work across different screen sizes.",
+    image: "../images/courses/responsive-design.png"
   },
 
   {
-    title:"Python for Data Science",
-    category:"data",
-    difficulty:"intermediate",
-    duration:320,
-    rating:4.7,
-    description:"Learn Python concepts used in data science.",
-    image:"../images/courses/python-data-science.png"
+    title: "Python for Data Science",
+    category: "data",
+    difficulty: "intermediate",
+    duration: 320,
+    rating: 4.7,
+    description: "Learn Python concepts used in data science.",
+    image: "../images/courses/python-data-science.png"
   },
 
   {
-    title:"Advanced JavaScript",
-    category:"programming",
-    difficulty:"advanced",
-    duration:195,
-    rating:4.9,
-    description:"Explore advanced JavaScript concepts.",
-    image:"../images/courses/advanced-javascript.png"
-  }, 
+    title: "Advanced JavaScript",
+    category: "programming",
+    difficulty: "advanced",
+    duration: 195,
+    rating: 4.9,
+    description: "Explore advanced JavaScript concepts.",
+    image: "../images/courses/advanced-javascript.png"
+  },
 ];
 
 const searchInput = document.getElementById("inputSearch");
@@ -77,15 +77,16 @@ let currentPage = 1;
 const coursesPerpage = 3;
 
 
-function displayCourses(courseList){
+function displayCourses(courseList) {
+  if (!courseContainer) return;
   courseContainer.innerHTML = "";
-  
+
   const totalPages = Math.ceil(courseList.length / coursesPerpage);
 
-  if(totalPages === 0){
+  if (totalPages === 0) {
     currentPage = 1;
   }
-  else if (currentPage > totalPages){
+  else if (currentPage > totalPages) {
     currentPage = totalPages;
   }
 
@@ -94,7 +95,7 @@ function displayCourses(courseList){
   const endIndex = startIndex + coursesPerpage;
   const pageCourses = courseList.slice(startIndex, endIndex);
 
-  pageCourses.forEach(function(course){
+  pageCourses.forEach(function (course) {
 
     const courseCard = document.createElement("div");
 
@@ -137,45 +138,59 @@ function displayCourses(courseList){
     </div>
     `;
 
+    courseCard.classList.add("cursor-pointer");
+
+    courseCard.addEventListener("click", () => {
+      window.location.href = "watch.html";
+
+    });
+
     courseContainer.appendChild(courseCard);
   });
 
   resultCount.textContent = `${courseList.length} ${courseList.length === 1 ? "course" : "courses"}`;
 
-  if(courseList.length === 0){
+  if (courseList.length === 0) {
     noResults.classList.remove("hidden");
   }
-  else{
+  else {
     noResults.classList.add("hidden");
   }
   page1Button.classList.toggle("hidden", totalPages < 1);
-page2Button.classList.toggle("hidden", totalPages < 2);
+  page2Button.classList.toggle("hidden", totalPages < 2);
 
-previousButton.disabled = currentPage === 1; 
-nextButton.disabled = currentPage === totalPages;
+  previousButton.disabled = currentPage === 1;
+  nextButton.disabled = currentPage === totalPages;
 
-page1Button.classList.toggle("bg-indigo-600", currentPage === 1);
-page1Button.classList.toggle("text-white", currentPage === 1);
-page2Button.classList.toggle("bg-indigo-600", currentPage === 2);
-page2Button.classList.toggle("text-white", currentPage === 2);
+  page1Button.classList.toggle("bg-indigo-600", currentPage === 1);
+  page1Button.classList.toggle("text-white", currentPage === 1);
+  page2Button.classList.toggle("bg-indigo-600", currentPage === 2);
+  page2Button.classList.toggle("text-white", currentPage === 2);
 }
 
 
-displayCourses(courses);
+if (courseContainer) {
+  displayCourses(courses);
+}
 
-function goToPage(page){
+function goToPage(page) {
   currentPage = page;
   filterCourses(false);
 }
 
 
 
-function filterCourses(resetPage = true){
+function filterCourses(resetPage = true) {
 
-  if(resetPage){
+  if (!searchInput || !filterCategory || !difficultyFilter ||
+      !durationFilter || !ratingFilter || !sortFilter ||
+      !resultCount || !noResults) return;
+
+
+  if (resetPage) {
     currentPage = 1;
   }
-  
+
 
   const searchText = searchInput.value.toLowerCase();
   const selectedCategory = filterCategory.value;
@@ -183,7 +198,7 @@ function filterCourses(resetPage = true){
   const selectedDuration = durationFilter.value;
   const selectedRating = ratingFilter.value;
 
-  const filteredCourses = courses.filter(function(course){
+  const filteredCourses = courses.filter(function (course) {
 
     const matchesSearch = course.title.toLowerCase().includes(searchText);
 
@@ -191,32 +206,32 @@ function filterCourses(resetPage = true){
 
     const matchesDifficulty = selectedDifficulty === "all" || course.difficulty === selectedDifficulty;
 
-    let matchesDuration = true; 
-    if(selectedDuration === "short"){
+    let matchesDuration = true;
+    if (selectedDuration === "short") {
       matchesDuration = course.duration < 120;
     }
-    else if(selectedDuration === "medium"){
-      matchesDuration = course.duration >= 120 && course.duration <=240;
+    else if (selectedDuration === "medium") {
+      matchesDuration = course.duration >= 120 && course.duration <= 240;
     }
-    else if(selectedDuration === "long"){
+    else if (selectedDuration === "long") {
       matchesDuration = course.duration > 240;
     }
 
     let matchesRating = true;
-    if(selectedRating !== "all"){
+    if (selectedRating !== "all") {
       matchesRating = course.rating >= Number(selectedRating);
     }
 
     return matchesSearch && matchesCategory && matchesDifficulty && matchesDuration && matchesRating;
   });
 
-  if(sortFilter.value === "rating"){
-    filteredCourses.sort(function (a, b){
+  if (sortFilter.value === "rating") {
+    filteredCourses.sort(function (a, b) {
       return b.rating - a.rating;
     })
   }
-  else if (sortFilter.value === "duration"){
-    filteredCourses.sort(function(a,b){
+  else if (sortFilter.value === "duration") {
+    filteredCourses.sort(function (a, b) {
       return a.duration - b.duration;
     })
   }
@@ -224,30 +239,26 @@ function filterCourses(resetPage = true){
   displayCourses(filteredCourses);
 }
 
-searchInput.addEventListener("input", filterCourses);
-filterCategory.addEventListener("change", filterCourses);
-difficultyFilter.addEventListener("change", filterCourses);
-durationFilter.addEventListener("change", filterCourses);
-ratingFilter.addEventListener("change", filterCourses);
-sortFilter.addEventListener("change", filterCourses);
 
-page1Button.addEventListener("click", function(){
-  goToPage(1);
-});
-page2Button.addEventListener("click", function(){
-  goToPage(2);
+searchInput?.addEventListener("input", filterCourses);
+filterCategory?.addEventListener("change", filterCourses);
+difficultyFilter?.addEventListener("change", filterCourses);
+durationFilter?.addEventListener("change", filterCourses);
+ratingFilter?.addEventListener("change", filterCourses);
+sortFilter?.addEventListener("change", filterCourses);
+
+page1Button?.addEventListener("click", () => goToPage(1));
+page2Button?.addEventListener("click", () => goToPage(2));
+
+previousButton?.addEventListener("click", () => {
+  if (currentPage > 1) goToPage(currentPage - 1);
 });
 
-previousButton.addEventListener("click", function(){
-  if(currentPage > 1){
-    goToPage(currentPage - 1);
-  }
-});
-nextButton.addEventListener("click", function(){
+nextButton?.addEventListener("click", () => {
   goToPage(currentPage + 1);
 });
 
-resetButton.addEventListener("click",function(){
+resetButton?.addEventListener("click", () => {
   searchInput.value = "";
   filterCategory.value = "all";
   difficultyFilter.value = "all";
@@ -257,6 +268,33 @@ resetButton.addEventListener("click",function(){
   filterCourses();
 });
 
-menuButton.addEventListener("click", function(){
-  mobileMenu.classList.toggle("hidden");
+if (menuButton && mobileMenu) {
+  menuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+}
+
+const themeBtns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
+
+function applyTheme(isDark) {
+  document.body.classList.toggle("bg-gray-900", isDark);
+  document.body.classList.toggle("text-white", isDark);
+  document.body.classList.toggle("bg-gray-50", !isDark);
+  document.body.classList.toggle("text-gray-800", !isDark);
+
+  const nav = document.querySelector("nav");
+  if (nav) {
+    nav.classList.toggle("bg-gray-900", isDark);
+    nav.classList.toggle("bg-white", !isDark);
+  }
+}
+
+applyTheme(localStorage.getItem("theme") === "dark");
+
+themeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const dark = !document.body.classList.contains("bg-gray-900");
+    applyTheme(dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  });
 });

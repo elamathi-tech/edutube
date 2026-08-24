@@ -49,6 +49,27 @@ function displayNotes() {
   });
 }
 
+
+const themeBtns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
+
+function applyTheme(isDark) {
+    document.body.classList.toggle("bg-gray-900", isDark);
+    document.body.classList.toggle("text-white", isDark);
+    document.body.classList.toggle("bg-gray-50", !isDark);
+    document.body.classList.toggle("text-gray-800", !isDark);
+
+    const nav = document.querySelector("nav");
+    if (nav) {
+        nav.classList.toggle("bg-gray-900", isDark);
+        nav.classList.toggle("bg-white", !isDark);
+    }
+}
+
+applyTheme(localStorage.getItem("theme") === "dark");
+
+
+
+
 addNoteButton.addEventListener("click", function(){
   const note = prompt("Enter your note:");
   if(note && note.trim() !== ""){
@@ -72,3 +93,44 @@ function deleteNote(index){
 }
 
 displayNotes();
+
+
+themeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const dark = !document.body.classList.contains("bg-gray-900");
+        applyTheme(dark);
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    });
+});
+
+
+function addToWatchlist(course) {
+  const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+  const alreadyExists = watchlist.some(item => item.id === course.id);
+
+  if (!alreadyExists) {
+    watchlist.push(course);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    alert("Added to Watchlist ❤️");
+  } else {
+    alert("Course already in Watchlist.");
+  }
+}
+
+
+
+const watchlistBtn = document.getElementById("watchlist-btn");
+
+watchlistBtn?.addEventListener("click", () => {
+    addToWatchlist({
+        id: "html-fundamentals",
+        title: "Introduction to HTML & CSS",
+        instructor: "EduTube Instructor",
+        category: "HTML",
+        duration: 130,
+        difficulty: "Beginner",
+        thumbnail: "../assets/images/html.svg",
+        description: "Learn the fundamentals of HTML and CSS."
+    });
+});
