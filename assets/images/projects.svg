@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="projGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9C27B0"/>
+      <stop offset="100%" stop-color="#7B1FA2"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E2F"/>
+      <stop offset="100%" stop-color="#0F0F1A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  <circle cx="680" cy="340" r="160" fill="#9C27B0" opacity="0.15"/>
+  <rect x="40" y="40" width="720" height="370" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <g transform="translate(140, 110)">
+    <rect width="180" height="180" rx="16" fill="url(#projGrad)"/>
+    <path d="M50 140 L90 40 L130 140 Z M65 110 H115" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="360" y="180" font-family="'Inter', system-ui, sans-serif" font-weight="800" font-size="34" fill="#FFFFFF">Build First JS Project</text>
+  <text x="360" y="230" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="24" fill="#E040FB">Hands-on Web App Building</text>
+  <rect x="360" y="265" width="180" height="36" rx="18" fill="rgba(156,39,176,0.2)" stroke="#E040FB" stroke-width="1.5"/>
+  <text x="450" y="289" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="15" fill="#E040FB" text-anchor="middle">ADVANCED • 90 MIN</text>
+</svg>

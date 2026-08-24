@@ -1,14 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Explore - EduTube</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTube</title>
 
-    <title>Explore - EduTube</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font-awesome-Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+    <style>
+      .body {
+        box-sizing: border-box;
+      }
+
+      .bottom-nav {
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+
+      <div class="flex items-center justify-between p-4 md:px-6 xl:px-10">
+
+        <!-- Brand -->
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-play text-white"></i>
+          </div>
+          <h1 class="font-bold text-2xl">EduTube</h1>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden xl:flex gap-8 font-semibold">
+
+          <a href="../index.html" class="text-indigo-600 hover:underline hover:text-gray-700">
+            Home
+          </a>
+
+          <a href="explore.html" class="text-indigo-600 hover:underline hover:text-gray-700">
+            Explore
+          </a>
+
+          <a href="learning-path.html" class="text-indigo-600 hover:underline hover:text-gray-700">
+            My Learning
+          </a>
+
+          <a href="quiz.html" class="text-indigo-600 hover:underline hover:text-gray-700">
+            Quiz
+          </a>
+
+
+          <a href="contact.html" class="text-indigo-600 hover:underline hover:text-gray-700">
+            About
+          </a>
+
+        </div>
+
+
+        <!-- Desktop Right Controls -->
+        <div class="hidden xl:flex gap-4">
+
+          <a href="explore.html"
+            class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+            <img src="../images/navbar/search.png" alt="Search" class="w-6">
+          </a>
+
+          <a href="watchlist.html"
+            class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+            <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+          </a>
+
+          <button id="theme-toggle"
+            class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+            <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+          </button>
+        </div>
+
+        <!-- Tablet / Mobile Hamburger -->
+        <div id="menu-btn" class="flex xl:hidden cursor-pointer p-2">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </div>
+
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white">
+
+        <div class="flex flex-col items-center gap-6 py-4">
+
+          <a href="explore.html" class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+            <img src="../images/navbar/search.png" alt="Search" class="w-6">
+            <span class="text-sm mt-1">Search</span>
+          </a>
+
+          <a href="watchlist.html" class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+            <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+            <span class="text-sm mt-1">Watchlist</span>
+          </a>
+
+          <button id="theme-toggle-mobile"
+            class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+            <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+            <span class="text-sm mt-1">Theme</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+    <!--Main-->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+      <!--Page Heading-->
+      <section class="mb-8">
+
+        <h1 class="text-3xl font-bold mb-2 md:text-4xl">
+          Explore Courses
+        </h1>
+
+        <p class="text-gray-600">
+          Discover courses and start learning something new.
+        </p>
+      </section>
+
+      <!--Search and Filters Section-->
+      <section class="bg-white rounded-xl p-5 shadow-sm mb-8">
+
+        <!--Search Section-->
+        <div class="mb-4">
+
+          <label for="inputSearch" class="block font-semibold text-sm mb-2">
+            Search Courses
+          </label>
+
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2">
+              🔍
+            </span>
+            <input id="inputSearch" type="text" placeholder="Search for courses...."
+              class="w-full border rounded-lg pl-11 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+
+        <!--Filter Section-->
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-6">
+
+          <!--Category-->
+          <div>
+            <label for="filterCategory" class="block text-sm font-semibold mb-2">
+              Category
+            </label>
+
+            <select id="filterCategory"
+              class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Categories</option>
+              <option value="web">Web Development</option>
+              <option value="programming">Programming</option>
+              <option value="data">Data Science</option>
+              <option value="design">Design</option>
+            </select>
+          </div>
+
+          <!--Difficulty-->
+          <div>
+            <label for="difficultyFilter" class="block text-sm font-semibold mb-2">
+              Difficulty
+            </label>
+
+            <select id="difficultyFilter"
+              class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+
+          <!--Duration-->
+          <div>
+            <label for="durationFilter" class="block text-sm font-semibold mb-2">
+              Duration
+            </label>
+
+            <select id="durationFilter"
+              class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Durations</option>
+              <option value="short">Under 2 hours</option>
+              <option value="medium">2-4 hours</option>
+              <option value="long">4+ hours</option>
+            </select>
+          </div>
+
+          <!--Rating-->
+          <div>
+            <label for="ratingFilter" class="block text-sm font-semibold mb-2">
+              Rating
+            </label>
+
+            <select id="ratingFilter"
+              class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="all">All Ratings</option>
+              <option value="4">4+ Stars</option>
+              <option value="4.5">4.5+ Stars</option>
+              <option value="4.8">4.8+ Stars</option>
+            </select>
+          </div>
+
+          <!--Sort-->
+          <div>
+            <label for="sortFilter" class="block text-sm font-semibold mb-2">
+              Sort
+            </label>
+
+            <select id="sortFilter"
+              class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="popular">Popular</option>
+              <option value="rating">Rating: High to Low</option>
+              <option value="duration">Duration: Short to Long</option>
+            </select>
+          </div>
+
+          <!--Reset-->
+          <div class="flex items-end">
+            <button id="resetButton" type="button"
+              class="w-full bg-indigo-600 text-white font-semibold rounded-lg px-4 py-3 hover:bg-indigo-700">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!--Resuls Heading-->
+      <section>
+        <div class="flex items-center justify-between mb-5">
+
+          <h2 class="text-2xl font-bold">
+            Courses
+          </h2>
+
+          <span id="countResult" class="text-sm text-gray-500">
+            0 courses
+          </span>
+        </div>
+
+        <!--Course Grid-->
+        <div id="courseContainer" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+
+        </div>
+
+        <!--Pagination-->
+
+        <div id="pagination" class="flex items-center justify-center gap-2 mt-8">
+          <button id="previousButton" type="button" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+            Previous
+          </button>
+
+          <button id="page1Button" type="button" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">
+            1
+          </button>
+
+          <button id="page2Button" type="button" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+            2
+          </button>
+
+          <button id="nextButton" type="button" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+            Next
+          </button>
+        </div>
+
+        <!--No Results-->
+        <div id="noResults" class="hidden text-center py-12">
+
+          <p class="text-xl font-semibold">
+            No courses found
+          </p>
+
+          <p class="text-gray-500 mt-2">
+            Try changing your search or filters.
+          </p>
+        </div>
+      </section>
+    </main>
+
+
+    <!--Footer-->
+    <footer id="about" class="bg-gray-900 text-white py-10 pb-24 md:pb-10">
+
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+
+          <div>
+            <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+              <i class="fa-solid fa-play text-white"></i>
+            </div>
+
+            <p class="text-gray-400 max-w-xs mt-3">
+              Learn practical skills through structured,
+              bite-sized video courses.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-3">Company</h3>
+
+            <ul class="text-gray-400 space-y-2">
+              <li>About Us</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Use</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-3">Follow</h3>
+
+            <div class="flex gap-4">
+              <i class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+              <i class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+              <i class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+              <i class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-sm text-gray-400">
+          &copy; 2026 EduTube. All rights reserved.
+        </div>
+
+      </div>
+
+    </footer>
+
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex xl:hidden text-center">
+
+      <div class="flex-1 flex flex-col items-center py-2">
+        <img src="../images/navbar/house.png" alt="Home" class="w-6">
+        <a href="../index.html" class="text-sm">Home</a>
+      </div>
+
+      <div class="flex-1 flex flex-col items-center py-2">
+        <img src="../images/navbar/search.png" alt="Explore" class="w-6">
+        <a href="explore.html" class="text-sm">Explore</a>
+      </div>
+
+      <div class="flex-1 flex flex-col items-center py-2">
+        <img src="../images/navbar/books.png" alt="Learning" class="w-6">
+        <a href="learning-path.html" class="text-sm">Learning</a>
+      </div>
+
+      <div class="flex-1 flex flex-col items-center py-2">
+        <i class="fa-solid fa-circle-question text-indigo-600 text-xl"></i>
+        <a href="quiz.html" class="text-sm">Quiz</a>
+      </div>
+
+      <div class="flex-1 flex flex-col items-center py-2">
+        <img src="../images/navbar/user.png" alt="Profile" class="w-6">
+        <a href="contact.html" class="text-sm">Profile</a>
+      </div>
+
+    </nav>
+
+
+    <script src="../js/script.js"></script>
   </body>
-</html>
+
+  </html>

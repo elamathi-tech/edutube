@@ -1,14 +1,1636 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contact - EduTube</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<head>
 
-  <body>
-  </body>
+    <title>EduTube | Contact & Feedback</title>
+
+    <meta name="description"
+        content="EduTube - Contact us, send feedback, ask questions and connect with our education community.">
+
+    <!-- Font-awesome-Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+    <style>
+        /*
+           ROOT VARIABLES
+        */
+
+        :root {
+            --primary: rgba(92, 60, 168, 0.849);
+            --primary-dark: blue;
+            --secondary: blue;
+
+            --bg: #06101f;
+            --bg-secondary: #0b1728;
+            --card: rgba(18, 31, 50, 0.82);
+            --card-solid: #101e31;
+
+            --text: #ffffff;
+            --text-secondary: #aeb8c7;
+            --border: rgba(255, 255, 255, 0.12);
+
+            --input: #101d2e;
+
+            --shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+
+            --transition: 0.3s ease;
+        }
+
+        /* LIGHT MODE */
+
+        body.light-mode {
+            --bg: #f5f7fb;
+            --bg-secondary: #ffffff;
+            --card: #ffffff;
+            --card-solid: #ffffff;
+
+            --text: #172033;
+            --text-secondary: #667085;
+            --border: rgba(20, 30, 50, 0.12);
+
+            --input: #f5f7fb;
+
+            --shadow:
+                0 15px 45px rgba(20, 30, 50, 0.10);
+        }
+
+        /* 
+           RESET
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+
+            line-height: 1.6;
+
+            transition:
+                background var(--transition),
+                color var(--transition);
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 
+           SCROLLBAR
+        */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 20px;
+        }
+
+        /*
+           CONTAINER
+        */
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /*
+           NAVBAR
+       */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 72px;
+
+            border-bottom: 1px solid var(--border);
+
+            background:
+                rgba(6, 16, 31, 0.88);
+
+            backdrop-filter: blur(18px);
+
+            transition: var(--transition);
+
+
+        }
+
+        body.light-mode .navbar {
+            background: rgba(255, 255, 255, 0.90);
+        }
+
+        .nav-container {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 30px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--primary);
+
+            border-radius: 8px;
+
+            color: white;
+
+            box-shadow:
+                0 8px 25px rgba(255, 45, 61, 0.3);
+        }
+
+        .logo-icon i {
+            font-size: 15px;
+        }
+
+        /* NAV LINKS */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: var(--text-secondary);
+
+            font-size: 14px;
+            font-weight: 500;
+
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: -12px;
+
+            height: 3px;
+
+            background: var(--primary);
+
+            border-radius: 10px;
+        }
+
+        /* NAV RIGHT */
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--text-secondary);
+        }
+
+        .search-box input {
+            width: 190px;
+
+            padding: 10px 15px 10px 40px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background: var(--input);
+            color: var(--text);
+
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+
+            width: 220px;
+        }
+
+        /* THEME BUTTON */
+
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--border);
+
+            background: var(--card);
+            color: var(--text);
+
+            border-radius: 50%;
+
+            transition: var(--transition);
+
+
+        }
+
+        .theme-btn:hover {
+            transform: rotate(20deg);
+
+            color: var(--primary);
+        }
+
+        /* MOBILE BUTTON */
+
+        .menu-btn {
+            display: none;
+
+            width: 40px;
+            height: 40px;
+
+            border: 0;
+
+            background: transparent;
+            color: var(--text);
+
+            font-size: 22px;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+
+            padding: 80px 0 65px;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(108, 99, 255, 0.16),
+                    transparent 70%);
+
+            pointer-events: none;
+        }
+
+        .hero::before {
+            left: -130px;
+            top: 50px;
+        }
+
+        .hero::after {
+            right: -130px;
+            top: 0;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            color: var(--primary);
+
+            font-size: 14px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 750px;
+
+            margin: auto;
+
+            font-size: clamp(38px, 5vw, 62px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: 20px auto 0;
+
+            color: var(--text-secondary);
+
+            font-size: 17px;
+        }
+
+        .hero-line {
+            width: 55px;
+            height: 4px;
+
+            margin: 25px auto 0;
+
+            border-radius: 10px;
+
+            background: var(--primary);
+        }
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================= */
+
+        .contact-section {
+            padding-bottom: 80px;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.55fr) minmax(300px, 0.85fr);
+
+            gap: 28px;
+        }
+
+        /* =========================================
+           FORM CARD
+        ========================================= */
+
+        .form-card {
+            padding: 35px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            background: var(--card);
+
+            box-shadow: var(--shadow);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+        }
+
+        .title-line {
+            width: 50px;
+            height: 3px;
+
+            margin-top: 9px;
+
+            background: var(--primary);
+
+            border-radius: 10px;
+        }
+
+        /* FORM */
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .field {
+            position: relative;
+        }
+
+        .field i {
+            position: absolute;
+
+            left: 15px;
+            top: 17px;
+
+            color: var(--text-secondary);
+
+            font-size: 15px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            outline: none;
+
+            border-radius: 9px;
+
+            background: var(--input);
+            color: var(--text);
+
+            transition: var(--transition);
+        }
+
+        .field input,
+        .field select {
+            height: 50px;
+
+            padding: 0 15px 0 43px;
+        }
+
+        .field textarea {
+            min-height: 140px;
+
+            resize: vertical;
+
+            padding: 15px 15px 15px 43px;
+        }
+
+        .field select {
+            appearance: none;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 3px rgba(255, 45, 61, 0.10);
+        }
+
+        /* SEND BUTTON */
+
+        .submit-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            padding: 13px 25px;
+
+            border: 0;
+
+            border-radius: 8px;
+
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    #ff5260);
+
+            color: white;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 10px 25px rgba(255, 45, 61, 0.25);
+
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 45, 61, 0.35);
+        }
+
+        /* 
+           CONTACT INFO
+        */
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+        .info-card {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 18px;
+
+            padding: 25px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 17px;
+
+            background: var(--card);
+
+            box-shadow: var(--shadow);
+
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(255, 45, 61, 0.35);
+        }
+
+        .info-icon {
+            min-width: 60px;
+            height: 60px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+
+            color: white;
+        }
+
+        .email-icon {
+            background:
+                linear-gradient(135deg, #5b5bef, #7c4dff);
+        }
+
+        .phone-icon {
+            background:
+                linear-gradient(135deg, #18b957, #47d86f);
+        }
+
+        .location-icon {
+            background:
+                linear-gradient(135deg, #ff9900, #ffb72b);
+        }
+
+        .info-content h3 {
+            margin-bottom: 4px;
+
+            font-size: 18px;
+        }
+
+        .info-content p {
+            color: var(--text-secondary);
+
+            font-size: 14px;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+
+            background: var(--bg-secondary);
+
+        }
+
+        .footer-main {
+            display: grid;
+
+
+            grid-template-columns:
+                1.4fr 0.8fr 0.9fr 1.2fr;
+
+            gap: 50px;
+
+            padding: 60px 0 45px;
+        }
+
+        .footer-brand p {
+            max-width: 280px;
+
+            margin: 18px 0;
+
+            color: var(--text-secondary);
+
+            font-size: 14px;
+        }
+
+        .footer-logo {
+            font-size: 23px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .socials a {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 8px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            transition: var(--transition);
+        }
+
+        .socials a:hover {
+            transform: translateY(-4px);
+
+            background: var(--primary);
+
+            color: white;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 18px;
+
+            font-size: 16px;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--text-secondary);
+
+            font-size: 14px;
+
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+
+            padding-left: 4px;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter p {
+            margin-bottom: 15px;
+
+            color: var(--text-secondary);
+
+            font-size: 14px;
+        }
+
+        .newsletter-form {
+            display: flex;
+
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            min-width: 0;
+            flex: 1;
+
+            height: 45px;
+
+            padding: 0 13px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background: var(--input);
+            color: var(--text);
+        }
+
+        .newsletter-form button {
+            padding: 0 17px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+        /* FOOTER BOTTOM */
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+
+            padding: 22px 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .footer-bottom p,
+        .footer-bottom a {
+            color: var(--text-secondary);
+
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        /* =========================================
+           BACK TO TOP
+        ========================================= */
+
+        .back-top {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 50px;
+            height: 50px;
+
+            display: grid;
+            place-items: center;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            color: white;
+
+            box-shadow:
+                0 10px 30px rgba(255, 45, 61, 0.35);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(15px);
+
+            transition: var(--transition);
+
+            z-index: 900;
+        }
+
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           TOAST
+        ========================================= */
+
+        .toast {
+            position: fixed;
+
+            right: 25px;
+            bottom: 90px;
+
+            max-width: 340px;
+
+            padding: 15px 18px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: var(--card-solid);
+
+            box-shadow: var(--shadow);
+
+            color: var(--text);
+
+            transform: translateX(120%);
+
+            transition: 0.4s ease;
+
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast i {
+            margin-right: 8px;
+
+            color: #30c970;
+        }
+
+        /* 
+           ANIMATION
+        */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero,
+        .form-card,
+        .info-card {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        /*
+           TABLET
+        */
+
+        @media (max-width: 1050px) {
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .search-box input {
+                width: 150px;
+            }
+
+            .search-box input:focus {
+                width: 170px;
+            }
+
+            .footer-main {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+        /* 
+           MOBILE NAVIGATION
+         */
+
+        @media (max-width: 850px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                left: 4%;
+
+                right: 4%;
+
+                top: 82px;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 15px;
+
+                border: 1px solid var(--border);
+
+                border-radius: 15px;
+
+                background: var(--card-solid);
+
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 13px 10px;
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .nav-right .search-box {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 
+           SMALL MOBILE
+         */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: 65px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 27px;
+            }
+
+            .nav-container {
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 60px 0 45px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .form-card {
+                padding: 23px 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .info-icon {
+                min-width: 52px;
+                height: 52px;
+
+                font-size: 18px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
+                padding: 45px 0;
+
+                flex: space-between;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                height: 45px;
+                color: rgba(160, 20, 20, 0.603);
+            }
+
+            .back-top {
+                width: 45px;
+                height: 45px;
+
+                right: 18px;
+                bottom: 18px;
+            }
+
+            .toast {
+                left: 18px;
+                right: 18px;
+                bottom: 75px;
+
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+
+        <div class="flex items-center justify-between p-4 md:px-6 xl:px-10">
+
+            <!-- Brand -->
+            <a href="../index.html" class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-play text-white"></i>
+                </div>
+
+                <h1 class="font-bold text-2xl">EduTube</h1>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex gap-8 font-semibold">
+
+                <a href="../index.html" class="text-indigo-600 hover:underline hover:text-gray-700">Home</a>
+
+                <a href="explore.html" class="text-indigo-600 hover:underline hover:text-gray-700">Explore</a>
+
+                <a href="learning-path.html" class="text-indigo-600 hover:underline hover:text-gray-700">My Learning</a>
+
+                <a href="quiz.html" class="text-indigo-600 hover:underline hover:text-gray-700">Quiz</a>
+
+                <a href="contact.html" class="text-indigo-600 hover:underline hover:text-gray-700">About</a>
+
+            </div>
+
+
+
+            <!-- Desktop Right Controls -->
+            <div class="hidden xl:flex gap-4">
+
+                <a href="explore.html"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                </a>
+
+                <a href="watchlist.html"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+                </a>
+
+                <button id="theme-toggle"
+                    class="w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100">
+                    <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+                </button>
+
+            </div>
+
+            <!-- Tablet / Mobile Hamburger -->
+            <div id="menu-btn" class="flex xl:hidden cursor-pointer p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </div>
+
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white">
+
+            <div class="flex flex-col items-center gap-6 py-4">
+
+                <a href="explore.html"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <img src="../images/navbar/search.png" alt="Search" class="w-6">
+                    <span class="text-sm mt-1">Search</span>
+                </a>
+
+                <a href="watchlist.html"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <i class="fa-solid fa-heart text-red-500 text-xl"></i>
+                    <span class="text-sm mt-1">Watchlist</span>
+                </a>
+
+                <button id="theme-toggle-mobile"
+                    class="flex flex-col items-center hover:text-indigo-600 border-b border-black pb-2">
+                    <img src="../images/navbar/crescent-moon.png" alt="Theme" class="w-6">
+                    <span class="text-sm mt-1">Theme</span>
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container">
+
+                <span class="eyebrow">
+                    Get In Touch
+                </span>
+
+                <h1>
+                    Contact Us /
+                    <span>Feedback</span>
+                </h1>
+
+                <p>
+                    We'd love to hear from you! Whether you have a
+                    question, suggestion, or feedback — we're here
+                    to listen and help you learn better.
+                </p>
+
+                <div class="hero-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTACT SECTION
+        ====================================== -->
+
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="contact-grid">
+
+                    <!-- FORM -->
+
+                    <div class="form-card">
+
+                        <div class="section-title">
+
+                            <h2>
+                                Send us a Message
+                            </h2>
+
+                            <div class="title-line"></div>
+
+                        </div>
+
+                        <form id="contactForm">
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="name">
+                                        Your Name
+                                    </label>
+
+                                    <div class="field">
+
+                                        <i class="fa-regular fa-user"></i>
+
+                                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="email">
+                                        Your Email
+                                    </label>
+
+                                    <div class="field">
+
+                                        <i class="fa-regular fa-envelope"></i>
+
+                                        <input type="email" id="email" name="email" placeholder="Enter your email"
+                                            required>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="topic">
+                                    Topic
+                                </label>
+
+                                <div class="field">
+
+                                    <i class="fa-solid fa-list"></i>
+
+                                    <select id="topic" required>
+
+                                        <option value="">
+                                            Select a topic
+                                        </option>
+
+                                        <option>
+                                            Course Feedback
+                                        </option>
+
+                                        <option>
+                                            Video Suggestion
+                                        </option>
+
+                                        <option>
+                                            Technical Problem
+                                        </option>
+
+                                        <option>
+                                            Account Support
+                                        </option>
+
+                                        <option>
+                                            Partnership
+                                        </option>
+
+                                        <option>
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Message / Feedback
+                                </label>
+
+                                <div class="field">
+
+                                    <i class="fa-regular fa-comment-dots"></i>
+
+                                    <textarea id="message" placeholder="Write your message or feedback..."
+                                        required></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fa-regular fa-paper-plane"></i>
+
+                                Send Message
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- INFORMATION -->
+
+                    <div class="info-column">
+
+                        <div class="info-card">
+
+                            <div class="info-icon email-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+
+                            <div class="info-content">
+
+                                <h3>
+                                    Email
+                                </h3>
+
+                                <p class="text-gray-400 text-sm break-all">
+                                    ajay7667826711@gmail.com.com
+                                </p>
+
+                                <p>
+                                    We reply within 24 hours
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <div class="info-icon phone-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+
+                            <div class="info-content">
+
+                                <h3>
+                                    Phone
+                                </h3>
+
+                                <p>
+                                    +91 9677552136
+                                </p>
+
+                                <p>
+                                    Mon - Sat : 9 AM - 6 PM
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <div class="info-icon location-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+
+                            <div class="info-content">
+
+                                <h3>
+                                    Address
+                                </h3>
+
+                                <p>
+                                    EduTube Headquarters
+                                </p>
+
+                                <p>
+                                    West street,cuddalore,<br>
+                                    Tamil Nadu, India
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+-->
+
+
+    <!--Footer-->
+    <footer id="about" class="bg-gray-900 text-white py-10 pb-24 md:pb-10">
+
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+
+                <div>
+                    <div class="w-9 h-9 bg-indigo-500 rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-play text-white"></i>
+                    </div>
+
+                    <p class="text-gray-400 max-w-xs mt-3">
+                        Learn practical skills through structured,
+                        bite-sized video courses.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Company</h3>
+
+                    <ul class="text-gray-400 space-y-2">
+                        <li>About Us</li>
+                        <li>Privacy Policy</li>
+                        <li>Terms of Use</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-3">Follow</h3>
+
+                    <div class="flex gap-4">
+                        <i
+                            class="fa-brands fa-instagram text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-youtube text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-facebook text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                        <i
+                            class="fa-brands fa-twitter text-xl cursor-pointer hover:text-blue-400 transition duration-2s"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-5 text-sm text-gray-400">
+                &copy; 2026 EduTube. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav fixed bottom-0 left-0 w-full bg-white flex xl:hidden text-center">
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/house.png" alt="Home" class="w-6">
+            <a href="../index.html" class="text-sm">Home</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/search.png" alt="Explore" class="w-6">
+            <a href="explore.html" class="text-sm">Explore</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/books.png" alt="Learning" class="w-6">
+            <a href="learning-path.html" class="text-sm">Learning</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <i class="fa-solid fa-circle-question text-indigo-600 text-xl"></i>
+            <a href="quiz.html" class="text-sm">Quiz</a>
+        </div>
+
+        <div class="flex-1 flex flex-col items-center py-2">
+            <img src="../images/navbar/user.png" alt="Profile" class="w-6">
+            <a href="contact.html" class="text-sm">Profile</a>
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- BACK TO TOP -->
+
+    <button class="back-top" id="backTop" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+    <!-- TOAST -->
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">
+            Message sent successfully!
+        </span>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+
+</body>
+
 </html>
